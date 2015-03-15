@@ -17,8 +17,8 @@ public class UserMeal extends BaseEntity {
 
     private User user;
 
-    public UserMeal() {
-    }
+//    public UserMeal() {
+//    }
 
     public UserMeal(Integer id, LocalDateTime dateTime, String description, int calories) {
         super(id);
