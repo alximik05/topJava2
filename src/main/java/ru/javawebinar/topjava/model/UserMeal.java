@@ -15,7 +15,7 @@ public class UserMeal extends BaseEntity {
 
     protected int calories;
 
-//    private User user;
+    private User user;
 
     public UserMeal() {
     }
@@ -43,17 +43,17 @@ public class UserMeal extends BaseEntity {
         return calories;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
+    public User getUser() {
+        return user;
+    }
 
     @Override
     public String toString() {
         return "Meal(" + id + ", " + TimeUtil.toString(dateTime) + ", '" + description + "', calories:" + calories + ')';
     }
 
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }
