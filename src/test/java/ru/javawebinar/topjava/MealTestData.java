@@ -5,7 +5,6 @@ import ru.javawebinar.topjava.model.BaseEntity;
 import ru.javawebinar.topjava.model.UserMeal;
 
 import java.time.LocalDateTime;
-import java.util.function.Function;
 
 import static java.time.LocalDateTime.of;
 
@@ -32,12 +31,6 @@ public class MealTestData {
         return updated;
     }
 
-    public static final ModelMatcher<UserMeal, String> MATCHER = new ModelMatcher<>(
-            new Function<UserMeal, String>() {
-                @Override
-                public String apply(UserMeal meal) {
-                    return meal.toString();
-                }
-            });
+    public static final ModelMatcher<UserMeal, String> MATCHER = new ModelMatcher<>(UserMeal::toString);
 
 }
