@@ -2,19 +2,26 @@ package ru.javawebinar.topjava.model;
 
 import ru.javawebinar.topjava.util.TimeUtil;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * GKislin
  * 06.03.2015.
  */
+@Entity
+@Table(name = "meals")
 public class UserMeal extends BaseEntity {
+    public static final String UPDATE = "UserMeal.update";
+
+    @Column(name = "datetime")
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
     protected LocalDateTime dateTime;
 
+    @Column(name = "description")
     protected String description;
 
+    @Column(name = "calories")
     protected int calories;
 
     @ManyToOne(fetch = FetchType.LAZY)

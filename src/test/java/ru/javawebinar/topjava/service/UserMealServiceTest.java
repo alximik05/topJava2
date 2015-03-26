@@ -37,8 +37,8 @@ public class UserMealServiceTest {
 
     @Test
     public void testDelete() throws Exception {
-        service.delete(MEAL1_ID, START_SEQ);
-        MATCHER.assertListEquals(Arrays.asList(MEAL4, MEAL3, MEAL2), service.getAll(START_SEQ));
+        service.delete(MEAL1.getId(), START_SEQ);
+        MATCHER.assertListEquals(Arrays.asList(MEAL2, MEAL3, MEAL4), service.getAll(START_SEQ));
     }
 
     @Test(expected = NotFoundException.class)
@@ -50,7 +50,7 @@ public class UserMealServiceTest {
     public void testSave() throws Exception {
         UserMeal created = getCreated();
         service.save(created, START_SEQ);
-        MATCHER.assertListEquals(Arrays.asList(created, MEAL4, MEAL3, MEAL2, MEAL1), service.getAll(START_SEQ));
+        MATCHER.assertEquals(created, service.get(created.getId(),START_SEQ));
     }
 
     @Test
@@ -68,7 +68,7 @@ public class UserMealServiceTest {
     public void testUpdate() throws Exception {
         UserMeal updated = getUpdated();
         service.update(updated, START_SEQ);
-        MATCHER.assertEquals(updated, service.get(MEAL1_ID, START_SEQ));
+        MATCHER.assertEquals(updated, service.get(MEAL1.getId(), START_SEQ));
     }
 
     @Test(expected = NotFoundException.class)
@@ -79,7 +79,7 @@ public class UserMealServiceTest {
 
     @Test
     public void testGetAll() throws Exception {
-        MATCHER.assertListEquals(Arrays.asList(MEAL4, MEAL3, MEAL2, MEAL1), service.getAll(START_SEQ));
+        MATCHER.assertListEquals(Arrays.asList(MEAL1,MEAL2,MEAL3,MEAL4), service.getAll(START_SEQ));
     }
 
     @Test
