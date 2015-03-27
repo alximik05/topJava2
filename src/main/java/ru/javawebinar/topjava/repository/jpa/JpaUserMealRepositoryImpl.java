@@ -35,7 +35,7 @@ public class JpaUserMealRepositoryImpl implements UserMealRepository{
         else {
 //entityManager.createNamedQuery("update from meal where").setParameter("userMeal", userMeal).executeUpdate() != 0;
 //            entityManager.createNamedQuery(UserMeal.UPDATE).setParameter("calories",userMeal.getCalories()).setParameter("dateTime", userMeal.getDateTime()).setParameter("description",userMeal.getDescription()).setParameter("id",userMeal.getId()).setParameter()
-                    entityManager.createQuery("update UserMeal um set um.description=:description, um.dateTime=:dateTime, um.calories=:calories where um.id=:id and um.user=:user",UserMeal.class)
+                    entityManager.createQuery("update UserMeal um set um.description=:description, um.dateTime=:dateTime, um.calories=:calories where um.id=:id and um.user=:user")
                     .setParameter("description", userMeal.getDescription())
                     .setParameter("dateTime", userMeal.getDateTime())
                     .setParameter("calories", userMeal.getCalories())
@@ -49,7 +49,7 @@ public class JpaUserMealRepositoryImpl implements UserMealRepository{
     @Override
     @Transactional
     public boolean delete(int id, int userId) {
-        return entityManager.createQuery("delete from UserMeal meal where meal.id=:id AND meal.user=:user",UserMeal.class)
+        return entityManager.createQuery("delete from UserMeal meal where meal.id=:id AND meal.user=:user")
                 .setParameter("id",id)
                 .setParameter("user",entityManager.getReference(User.class,userId))
                 .executeUpdate() != 0;
@@ -74,7 +74,7 @@ public class JpaUserMealRepositoryImpl implements UserMealRepository{
     @Override
     @Transactional
     public void deleteAll(int userId) {
-        entityManager.createQuery("delete from UserMeal meal where meal.user=:user", UserMeal.class)
+        entityManager.createQuery("delete from UserMeal meal where meal.user=:user")
                 .setParameter("user", entityManager.getReference(User.class, userId))
                 .getResultList();
     }
