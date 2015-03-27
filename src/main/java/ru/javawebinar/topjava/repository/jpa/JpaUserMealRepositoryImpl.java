@@ -2,7 +2,6 @@ package ru.javawebinar.topjava.repository.jpa;
 
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.model.UserMeal;
@@ -18,7 +17,7 @@ import java.util.List;
  * 20.03.2015.
  */
 @Repository
-@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+@Transactional(readOnly = true)
 public class JpaUserMealRepositoryImpl implements UserMealRepository {
 
     @PersistenceContext
